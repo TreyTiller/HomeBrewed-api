@@ -34,9 +34,8 @@ recipesRouter
       }
     }
 
-    const { title, url, description, rating } = req.body
+    const { title, skill, time, description } = req.body
 
-    const ratingNum = Number(rating)
 
     if (!Number.isInteger(ratingNum) || ratingNum < 0 || ratingNum > 5) {
       logger.error(`Invalid rating '${rating}' supplied`)
