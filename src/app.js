@@ -5,6 +5,7 @@ const cors = require('cors')
 const helmet = require('helmet')
 const { NODE_ENV } = require('./config')
 const recipeRoutes = require('./recipe/routes')
+const RecipeService = require('./recipes-service')
 
 const app = express()
 
@@ -17,6 +18,15 @@ app.use(helmet())
 app.use(cors())
 
 app.use('/api/recipes', recipeRoutes)
+
+app.get('/recipes', (req, res, next) => {
+    const knexInstance = req.app.get('db')
+    RecipeService.getAllRecipes(knexInstance)
+        .then(recipes => {
+            res.json(recipes)
+        })
+        .catch(next)
+})
 
 app.use(function errorHandler(error, req, res, next) {
     let response
