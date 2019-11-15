@@ -1,5 +1,4 @@
 const express = require('express')
-const { isWebUri } = require('valid-url')
 const xss = require('xss')
 const logger = require('../logger')
 const RecipesService = require('./services')
@@ -10,9 +9,9 @@ const bodyParser = express.json()
 const serializeRecipe = recipe => ({
   id: recipe.id,
   title: xss(recipe.title),
-  url: recipe.url,
+  skill: xss(recipe.skill),
+  time: xss(recipe.time),
   description: xss(recipe.description),
-  rating: Number(recipe.rating),
 })
 
 recipesRouter
@@ -25,7 +24,7 @@ recipesRouter
       .catch(next)
   })
   .post(bodyParser, (req, res, next) => {
-    for (const field of ['title', 'url', 'rating']) {
+    for (const field of ['title', 'skill', 'time', 'description']) {
       if (!req.body[field]) {
         logger.error(`${field} is required`)
         return res.status(400).send({
@@ -36,22 +35,7 @@ recipesRouter
 
     const { title, skill, time, description } = req.body
 
-
-    if (!Number.isInteger(ratingNum) || ratingNum < 0 || ratingNum > 5) {
-      logger.error(`Invalid rating '${rating}' supplied`)
-      return res.status(400).send({
-        error: { message: `'rating' must be a number between 0 and 5` }
-      })
-    }
-
-    if (!isWebUri(url)) {
-      logger.error(`Invalid url '${url}' supplied`)
-      return res.status(400).send({
-        error: { message: `'url' must be a valid URL` }
-      })
-    }
-
-    const newRecipe = { title, url, description, rating }
+    const newRecipe = { title, skill, time, description }
 
     RecipesService.insertRecipe(
       req.app.get('db'),

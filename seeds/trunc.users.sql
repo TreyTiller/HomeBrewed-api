@@ -1,0 +1,1 @@
+TRUNCATE homebrewed_users;
