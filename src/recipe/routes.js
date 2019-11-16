@@ -2,7 +2,7 @@ const express = require('express')
 const xss = require('xss')
 const logger = require('../logger')
 const RecipesService = require('./services')
-
+const { requireAuth } = require('../middleware/jwt-auth')
 const recipesRouter = express.Router()
 const bodyParser = express.json()
 

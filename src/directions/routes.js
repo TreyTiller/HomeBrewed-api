@@ -1,6 +1,7 @@
 const express = require('express')
 const xss = require('xss')
 const logger = require('../logger')
+const { requireAuth } = require('../middleware/jwt-auth')
 const directionsService = require('./services')
 
 const directionsRouter = express.Router()
