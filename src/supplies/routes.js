@@ -9,9 +9,7 @@ const bodyParser = express.json()
 const serializesupplies = supplies => ({
   id: supplies.id,
   title: xss(supplies.title),
-  skill: xss(supplies.skill),
-  time: xss(supplies.time),
-  description: xss(supplies.description),
+  recipe_id: supplies.recipe_id
 })
 
 suppliesRouter
@@ -24,7 +22,7 @@ suppliesRouter
       .catch(next)
   })
   .post(bodyParser, (req, res, next) => {
-    for (const field of ['title', 'skill', 'time', 'description']) {
+    for (const field of ['title', 'recipe_id']) {
       if (!req.body[field]) {
         logger.error(`${field} is required`)
         return res.status(400).send({
@@ -33,9 +31,9 @@ suppliesRouter
       }
     }
 
-    const { title, skill, time, description } = req.body
+    const { title, recipe_id } = req.body
 
-    const newsupplies = { title, skill, time, description }
+    const newsupplies = { title, recipe_id }
 
     suppliesService.insertsupplies(
       req.app.get('db'),
