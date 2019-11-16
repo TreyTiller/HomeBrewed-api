@@ -7,6 +7,8 @@ const { NODE_ENV } = require('./config')
 const recipeRoutes = require('./recipe/routes')
 const RecipeService = require('./recipes-service')
 const authRouter = require('./auth/auth-router')
+const directionsRouter = require('./directions/routes')
+const suppliesRouter = require('./supplies/routes')
 
 const app = express()
 
@@ -20,6 +22,8 @@ app.use(cors())
 
 app.use('/api/auth', authRouter)
 app.use('/api/recipes', recipeRoutes)
+app.use('/api/directions', directionsRouter)
+app.use('/api/supplies', suppliesRouter)
 
 app.use(function errorHandler(error, req, res, next) {
     let response

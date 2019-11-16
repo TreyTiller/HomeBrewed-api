@@ -1,0 +1,7 @@
+{"message":"title is required","level":"error"}
+{"message":"direction with id 1 created.","level":"info"}
+{"message":"direction with id 2 created.","level":"info"}
+{"message":"title is required","level":"error"}
+{"message":"title is required","level":"error"}
+{"message":"Recipe with id 8 created.","level":"info"}
+{"message":"Recipe with id 8 deleted.","level":"info"}

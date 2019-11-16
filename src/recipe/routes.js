@@ -24,7 +24,7 @@ recipesRouter
       .catch(next)
   })
   .post(bodyParser, (req, res, next) => {
-    for (const field of ['title', 'skill', 'time', 'description']) {
+    for (const field of ['title', 'skill', 'time']) {
       if (!req.body[field]) {
         logger.error(`${field} is required`)
         return res.status(400).send({
