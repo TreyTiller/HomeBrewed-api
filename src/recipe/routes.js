@@ -11,7 +11,8 @@ const serializeRecipe = recipe => ({
   title: xss(recipe.title),
   skill: xss(recipe.skill),
   time: xss(recipe.time),
-  description: xss(recipe.description),
+  supplies: xss(recipe.supplies),
+  directions: xss(recipe.directions),
 })
 
 recipesRouter
@@ -24,7 +25,7 @@ recipesRouter
       .catch(next)
   })
   .post(bodyParser, (req, res, next) => {
-    for (const field of ['title', 'skill', 'time']) {
+    for (const field of ['title', 'skill', 'time', 'supplies', 'directions']) {
       if (!req.body[field]) {
         logger.error(`${field} is required`)
         return res.status(400).send({
@@ -33,9 +34,9 @@ recipesRouter
       }
     }
 
-    const { title, skill, time, description } = req.body
+    const { title, skill, time, supplies, directions } = req.body
 
-    const newRecipe = { title, skill, time, description }
+    const newRecipe = { title, skill, time, supplies, directions }
 
     RecipesService.insertRecipe(
       req.app.get('db'),
