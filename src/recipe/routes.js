@@ -25,7 +25,7 @@ recipesRouter
       .catch(next)
   })
   .post(bodyParser, (req, res, next) => {
-    for (const field of ['title', 'skill', 'time', 'supplies', 'directions']) {
+    for (const field of ['title', 'time']) {
       if (!req.body[field]) {
         logger.error(`${field} is required`)
         return res.status(400).send({
@@ -34,9 +34,9 @@ recipesRouter
       }
     }
 
-    const { title, skill, time, supplies, directions } = req.body
+    const { title, skill, time } = req.body
 
-    const newRecipe = { title, skill, time, supplies, directions }
+    const newRecipe = { title, skill, time }
 
     RecipesService.insertRecipe(
       req.app.get('db'),

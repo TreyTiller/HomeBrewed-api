@@ -30,3 +30,24 @@
 {"message":"title is required","level":"error"}
 {"message":"title is required","level":"error"}
 {"message":"title is required","level":"error"}
+{"message":"title is required","level":"error"}
+{"message":"skill is required","level":"error"}
+{"message":"skill is required","level":"error"}
+{"message":"Recipe with id 11 created.","level":"info"}
+{"message":"Recipe with id 14 created.","level":"info"}
+{"message":"Recipe with id 19 created.","level":"info"}
+{"message":"Recipe with id 20 created.","level":"info"}
+{"message":"supplies with id 5 created.","level":"info"}
+{"message":"supplies with id 6 created.","level":"info"}
+{"message":"supplies with id 7 created.","level":"info"}
+{"message":"Recipe with id 21 created.","level":"info"}
+{"message":"supplies with id 8 created.","level":"info"}
+{"message":"supplies with id 9 created.","level":"info"}
+{"message":"Recipe with id 22 created.","level":"info"}
+{"message":"supplies with id 10 created.","level":"info"}
+{"message":"supplies with id 11 created.","level":"info"}
+{"message":"Recipe with id 23 created.","level":"info"}
+{"message":"supplies with id 12 created.","level":"info"}
+{"message":"supplies with id 13 created.","level":"info"}
+{"message":"direction with id 9 created.","level":"info"}
+{"message":"direction with id 10 created.","level":"info"}

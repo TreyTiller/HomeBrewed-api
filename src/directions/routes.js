@@ -13,34 +13,42 @@ const serializedirection = direction => ({
 })
 
 directionsRouter
-  .route('/')
-  .post(bodyParser, (req, res, next) => {
-    for (const field of ['title', 'recipe_id']) {
-      if (!req.body[field]) {
-        logger.error(`${field} is required`)
-        return res.status(400).send({
-          error: { message: `'${field}' is required` }
-        })
-      }
-    }
-
-    const { title, recipe_id } = req.body
-
-    const newdirection = { title, recipe_id }
-
-    directionsService.insertdirection(
-      req.app.get('db'),
-      newdirection
-    )
-      .then(direction => {
-        logger.info(`direction with id ${direction.id} created.`)
-        res
-          .status(201)
-          .location(`/${direction.id}`)
-          .json(serializedirection(direction))
+  .route('/:recipe_id')
+  .get((req, res, next) => {
+    directionsService.getAlldirections(req.app.get('db'))
+      .then(directions => {
+        res.json(supplies.map(serializedirections))
       })
       .catch(next)
   })
+  .post(bodyParser, (req, res, next) => {
+    req.body.forEach(item => {
+      for (const field of ['title']) {
+        if (!item[field]) {
+          logger.error(`${field} is required`)
+          return
+        }
+      }
+
+      const { title } = item
+
+      const newdirection = { title, recipe_id: req.params.recipe_id }
+
+      directionsService.insertdirection(
+        req.app.get('db'),
+        newdirection
+      )
+        .then(direction => {
+          logger.info(`direction with id ${direction.id} created.`)
+
+        })
+        .catch(next)
+    })
+    res
+      .status(201)
+      .send()
+  })
+
 
 directionsRouter
   .route('/:direction_id')

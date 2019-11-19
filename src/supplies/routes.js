@@ -14,7 +14,7 @@ const serializesupplies = supplies => ({
 })
 
 suppliesRouter
-  .route('/')
+  .route('/:recipe_id')
   .get((req, res, next) => {
     suppliesService.getAllsupplies(req.app.get('db'))
       .then(supplies => {
@@ -23,31 +23,33 @@ suppliesRouter
       .catch(next)
   })
   .post(bodyParser, (req, res, next) => {
-    for (const field of ['title', 'recipe_id']) {
-      if (!req.body[field]) {
-        logger.error(`${field} is required`)
-        return res.status(400).send({
-          error: { message: `'${field}' is required` }
-        })
+    req.body.forEach(item => {
+      for (const field of ['title']) {
+        if (!item[field]) {
+          logger.error(`${field} is required`)
+          return res.status(400).send({
+            error: { message: `'${field}' is required` }
+          })
+        }
       }
-    }
 
-    const { title, recipe_id } = req.body
+      const { title } = item
 
-    const newsupplies = { title, recipe_id }
+      const newsupplies = { title, recipe_id: req.params.recipe_id }
 
-    suppliesService.insertsupplies(
-      req.app.get('db'),
-      newsupplies
-    )
-      .then(supplies => {
-        logger.info(`supplies with id ${supplies.id} created.`)
-        res
-          .status(201)
-          .location(`/${supplies.id}`)
-          .json(serializesupplies(supplies))
-      })
-      .catch(next)
+      suppliesService.insertsupplies(
+        req.app.get('db'),
+        newsupplies
+      )
+        .then(supplies => {
+          logger.info(`supplies with id ${supplies.id} created.`)
+
+        })
+        .catch(next)
+    })
+    res
+      .status(201)
+      .send()
   })
 
 suppliesRouter
@@ -82,5 +84,7 @@ suppliesRouter
       })
       .catch(next)
   })
+
+
 
 module.exports = suppliesRouter
