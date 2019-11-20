@@ -17,14 +17,14 @@ const serializeRecipe = recipe => ({
 
 recipesRouter
   .route('/')
-  .get((req, res, next) => {
+  .get(requireAuth, (req, res, next) => {
     RecipesService.getAllRecipes(req.app.get('db'))
       .then(recipes => {
         res.json(recipes.map(serializeRecipe))
       })
       .catch(next)
   })
-  .post(bodyParser, (req, res, next) => {
+  .post(requireAuth, bodyParser, (req, res, next) => {
     for (const field of ['title', 'time']) {
       if (!req.body[field]) {
         logger.error(`${field} is required`)
@@ -36,7 +36,7 @@ recipesRouter
 
     const { title, skill, time } = req.body
 
-    const newRecipe = { title, skill, time }
+    const newRecipe = { title, skill, time, user_id: req.user.id }
 
     RecipesService.insertRecipe(
       req.app.get('db'),

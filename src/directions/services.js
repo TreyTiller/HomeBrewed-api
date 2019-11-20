@@ -1,5 +1,11 @@
 const directionsService = {
-    insertdirection(knex, newdirection) {
+  getAlldirections(knex) {
+    return knex.select('*').from('directions')
+  },
+  getById(knex, id) {
+    return knex.from('directions').select('*').where('recipe_id', id)
+  }, 
+  insertdirection(knex, newdirection) {
       return knex
         .insert(newdirection)
         .into('directions')
@@ -12,6 +18,11 @@ const directionsService = {
       return knex('directions')
         .where({ id })
         .delete()
+    },
+    updatedirections(knex, id, newdirectionsFields) {
+      return knex('directions')
+        .where({ id })
+        .update(newdirectionsFields)
     },
   }
   

@@ -16,13 +16,13 @@ const serializesupplies = supplies => ({
 suppliesRouter
   .route('/:recipe_id')
   .get((req, res, next) => {
-    suppliesService.getAllsupplies(req.app.get('db'))
+    suppliesService.getById(req.app.get('db'), req.params.recipe_id)
       .then(supplies => {
         res.json(supplies.map(serializesupplies))
       })
       .catch(next)
   })
-  .post(bodyParser, (req, res, next) => {
+  .post(requireAuth, bodyParser, (req, res, next) => {
     req.body.forEach(item => {
       for (const field of ['title']) {
         if (!item[field]) {

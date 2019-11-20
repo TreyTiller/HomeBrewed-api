@@ -3,7 +3,7 @@ const suppliessService = {
       return knex.select('*').from('supplies')
     },
     getById(knex, id) {
-      return knex.from('supplies').select('*').where('id', id).first()
+      return knex.from('supplies').select('*').where('recipe_id', id)
     },
     insertsupplies(knex, newsupplies) {
       return knex

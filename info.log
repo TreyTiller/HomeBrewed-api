@@ -51,3 +51,20 @@
 {"message":"supplies with id 13 created.","level":"info"}
 {"message":"direction with id 9 created.","level":"info"}
 {"message":"direction with id 10 created.","level":"info"}
+{"message":"Recipe with id 24 created.","level":"info"}
+{"message":"supplies with id 14 created.","level":"info"}
+{"message":"supplies with id 15 created.","level":"info"}
+{"message":"direction with id 11 created.","level":"info"}
+{"message":"direction with id 12 created.","level":"info"}
+{"message":"direction with id 13 created.","level":"info"}
+{"message":"supplies with id 16 created.","level":"info"}
+{"message":"title is required","level":"error"}
+{"message":"title is required","level":"error"}
+{"message":"title is required","level":"error"}
+{"message":"title is required","level":"error"}
+{"message":"Recipe with id 25 created.","level":"info"}
+{"message":"title is required","level":"error"}
+{"message":"title is required","level":"error"}
+{"message":"Recipe with id 26 created.","level":"info"}
+{"message":"supplies with id 17 created.","level":"info"}
+{"message":"direction with id 14 created.","level":"info"}

@@ -7,21 +7,22 @@ const directionsService = require('./services')
 const directionsRouter = express.Router()
 const bodyParser = express.json()
 
-const serializedirection = direction => ({
-  id: direction.id,
-  title: xss(direction.title),
+const serializedirections = directions => ({
+  id: directions.id,
+  title: xss(directions.title),
+  recipe_id: directions.recipe_id
 })
 
 directionsRouter
   .route('/:recipe_id')
   .get((req, res, next) => {
-    directionsService.getAlldirections(req.app.get('db'))
+    directionsService.getById(req.app.get('db'), req.params.recipe_id)
       .then(directions => {
-        res.json(supplies.map(serializedirections))
+        res.json(directions.map(serializedirections))
       })
       .catch(next)
   })
-  .post(bodyParser, (req, res, next) => {
+  .post(requireAuth, bodyParser, (req, res, next) => {
     req.body.forEach(item => {
       for (const field of ['title']) {
         if (!item[field]) {
