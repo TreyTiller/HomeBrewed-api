@@ -12,7 +12,7 @@ const serializeRecipe = recipe => ({
   skill: xss(recipe.skill),
   time: xss(recipe.time),
   supplies: xss(recipe.supplies),
-  directions: xss(recipe.directions),
+  user_id: xss(recipe.user_id),
 })
 
 recipesRouter
