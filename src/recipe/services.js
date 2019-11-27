@@ -1,6 +1,6 @@
 const RecipesService = {
-    getAllRecipes(knex) {
-      return knex.select('*').from('recipes')
+    getAllRecipes(knex, user_id) {
+      return knex.select('*').from('recipes').where({user_id}).orWhere({user_id: null}).orderBy("id", "desc")
     },
     getById(knex, id) {
       return knex.from('recipes').select('*').where('id', id).first()
@@ -14,14 +14,14 @@ const RecipesService = {
           return rows[0]
         })
     },
-    deleteRecipe(knex, id) {
+    deleteRecipe(knex, id, user_id) {
       return knex('recipes')
-        .where({ id })
+        .where({ id, user_id })
         .delete()
     },
-    updateRecipe(knex, id, newRecipeFields) {
+    updateRecipe(knex, id, user_id, newRecipeFields) {
       return knex('recipes')
-        .where({ id })
+        .where({ id, user_id })
         .update(newRecipeFields)
     },
   }

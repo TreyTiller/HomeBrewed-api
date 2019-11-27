@@ -18,14 +18,14 @@ const serializeRecipe = recipe => ({
 recipesRouter
   .route('/')
   .get(requireAuth, (req, res, next) => {
-    RecipesService.getAllRecipes(req.app.get('db'))
+    RecipesService.getAllRecipes(req.app.get('db'), req.user.id)
       .then(recipes => {
         res.json(recipes.map(serializeRecipe))
       })
       .catch(next)
   })
   .post(requireAuth, bodyParser, (req, res, next) => {
-    for (const field of ['title', 'time']) {
+    for (const field of ['title', 'skill', 'time']) {
       if (!req.body[field]) {
         logger.error(`${field} is required`)
         return res.status(400).send({

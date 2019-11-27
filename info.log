@@ -68,3 +68,21 @@
 {"message":"Recipe with id 26 created.","level":"info"}
 {"message":"supplies with id 17 created.","level":"info"}
 {"message":"direction with id 14 created.","level":"info"}
+{"message":"Recipe with id 27 created.","level":"info"}
+{"message":"title is required","level":"error"}
+{"message":"title is required","level":"error"}
+{"message":"Recipe with id 28 created.","level":"info"}
+{"message":"title is required","level":"error"}
+{"message":"title is required","level":"error"}
+{"message":"Recipe with id 29 created.","level":"info"}
+{"message":"title is required","level":"error"}
+{"message":"title is required","level":"error"}
+{"message":"skill is required","level":"error"}
+{"message":"title is required","level":"error"}
+{"message":"title is required","level":"error"}
+{"message":"skill is required","level":"error"}
+{"message":"title is required","level":"error"}
+{"message":"title is required","level":"error"}
+{"message":"Recipe with id 30 created.","level":"info"}
+{"message":"title is required","level":"error"}
+{"message":"title is required","level":"error"}
