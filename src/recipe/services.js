@@ -14,9 +14,9 @@ const RecipesService = {
           return rows[0]
         })
     },
-    deleteRecipe(knex, id, user_id) {
+    deleteRecipe(knex, id) {
       return knex('recipes')
-        .where({ id, user_id })
+        .where({ id })
         .delete()
     },
     updateRecipe(knex, id, user_id, newRecipeFields) {

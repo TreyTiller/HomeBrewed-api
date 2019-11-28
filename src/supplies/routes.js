@@ -53,7 +53,7 @@ suppliesRouter
   })
 
 suppliesRouter
-  .route('/:supplies_id')
+  .route('/:recipe_id')
   .all((req, res, next) => {
     const { supplies_id } = req.params
     suppliesService.getById(req.app.get('db'), supplies_id)
@@ -76,6 +76,7 @@ suppliesRouter
     const { supplies_id } = req.params
     suppliesService.deletesupplies(
       req.app.get('db'),
+      req.params.recipe_id,
       supplies_id
     )
       .then(numRowsAffected => {

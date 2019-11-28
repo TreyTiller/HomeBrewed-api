@@ -11,7 +11,8 @@ const serializeRecipe = recipe => ({
   title: xss(recipe.title),
   skill: xss(recipe.skill),
   time: xss(recipe.time),
-  supplies: xss(recipe.supplies),
+  coffee: xss(recipe.coffee),
+  water: xss(recipe.water),
   user_id: xss(recipe.user_id),
 })
 
@@ -72,7 +73,7 @@ recipesRouter
   .get((req, res) => {
     res.json(serializeRecipe(res.recipe))
   })
-  .delete((req, res, next) => {
+  .delete(requireAuth,(req, res, next) => {
     const { recipe_id } = req.params
     RecipesService.deleteRecipe(
       req.app.get('db'),
