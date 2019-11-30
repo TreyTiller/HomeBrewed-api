@@ -103,3 +103,21 @@
 {"message":"direction with id 57 created.","level":"info"}
 {"message":"supplies with id 34 deleted.","level":"info"}
 {"message":"supplies with id 43 deleted.","level":"info"}
+{"message":"Recipe with id 1 created.","level":"info"}
+{"message":"supplies with id 1 created.","level":"info"}
+{"message":"direction with id 1 created.","level":"info"}
+{"message":"Recipe with id 1 deleted.","level":"info"}
+{"message":"Recipe with id 2 created.","level":"info"}
+{"message":"supplies with id 2 created.","level":"info"}
+{"message":"supplies with id 3 created.","level":"info"}
+{"message":"direction with id 2 created.","level":"info"}
+{"message":"direction with id 3 created.","level":"info"}
+{"message":"Recipe with id 2 deleted.","level":"info"}
+{"message":"Recipe with id 2 not found.","level":"error"}
+{"message":"Recipe with id 2 not found.","level":"error"}
+{"message":"Recipe with id 3 created.","level":"info"}
+{"message":"supplies with id 5 created.","level":"info"}
+{"message":"supplies with id 4 created.","level":"info"}
+{"message":"direction with id 4 created.","level":"info"}
+{"message":"direction with id 5 created.","level":"info"}
+{"message":"Recipe with id 3 deleted.","level":"info"}

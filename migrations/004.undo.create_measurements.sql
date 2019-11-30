@@ -1,5 +1,0 @@
-ALTER TABLE recipes
-DROP COLUMN coffee;
-
-ALTER TABLE recipes
-DROP COLUMN water;
