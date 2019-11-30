@@ -35,7 +35,7 @@ recipesRouter
       }
     }
 
-    const { title, skill, time } = req.body
+    const { title, skill, time, coffee, water } = req.body
 
     const newRecipe = { title, skill, time, user_id: req.user.id }
 
