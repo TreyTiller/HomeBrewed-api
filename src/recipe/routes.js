@@ -37,7 +37,7 @@ recipesRouter
 
     const { title, skill, time, coffee, water } = req.body
 
-    const newRecipe = { title, skill, time, user_id: req.user.id }
+    const newRecipe = { title, skill, time, coffee, water, user_id: req.user.id }
 
     RecipesService.insertRecipe(
       req.app.get('db'),
