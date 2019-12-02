@@ -1,9 +1,9 @@
 const directionsService = {
   getAlldirections(knex) {
-    return knex.select('*').from('directions').orderBy('id', 'asc')
+    return knex.select('*').from('directions')
   },
   getById(knex, id) {
-    return knex.from('directions').select('*').where('recipe_id', id).orderBy('id', 'asc')
+    return knex.from('directions').select('*').where('recipe_id', id)
   }, 
   insertdirection(knex, newdirection) {
       return knex

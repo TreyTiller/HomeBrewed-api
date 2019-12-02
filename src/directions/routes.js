@@ -16,7 +16,7 @@ const serializedirections = directions => ({
 directionsRouter
   .route('/:recipe_id')
   .get((req, res, next) => {
-    directionsService.getById(req.app.get('db'), id, req.params.recipe_id)
+    directionsService.getById(req.app.get('db'), req.params.recipe_id)
       .then(directions => {
         res.json(directions.map(serializedirections))
       })
