@@ -16,7 +16,7 @@ const serializedirections = directions => ({
 directionsRouter
   .route('/:recipe_id')
   .get((req, res, next) => {
-    directionsService.getById(req.app.get('db'), req.params.recipe_id)
+    directionsService.getById(req.app.get('db'), id, req.params.recipe_id)
       .then(directions => {
         res.json(directions.map(serializedirections))
       })
@@ -55,7 +55,7 @@ directionsRouter
   .route('/:direction_id')
   .all((req, res, next) => {
     const { directions_id } = req.params
-    suppliesService.getById(req.app.get('db'), supplies_id)
+    directionsService.getById(req.app.get('db'), directions_id)
       .then(directions => {
         if (!directions) {
           logger.error(`directions with id ${directions_id} not found.`)
@@ -69,7 +69,7 @@ directionsRouter
       .catch(next)
   })
   .get((req, res) => {
-    res.json(serializesupplies(res.directions))
+    res.json(serializedirections(res.directions))
   })
   .delete((req, res, next) => {
     const { directions_id } = req.params
