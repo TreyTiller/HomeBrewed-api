@@ -53,14 +53,32 @@ directionsRouter
 
 directionsRouter
   .route('/:direction_id')
+  .all((req, res, next) => {
+    const { directions_id } = req.params
+    suppliesService.getById(req.app.get('db'), supplies_id)
+      .then(directions => {
+        if (!directions) {
+          logger.error(`directions with id ${directions_id} not found.`)
+          return res.status(404).json({
+            error: { message: `directions Not Found` }
+          })
+        }
+        res.directions = directions
+        next()
+      })
+      .catch(next)
+  })
+  .get((req, res) => {
+    res.json(serializesupplies(res.directions))
+  })
   .delete((req, res, next) => {
-    const { direction_id } = req.params
+    const { directions_id } = req.params
     directionsService.deletedirection(
       req.app.get('db'),
-      direction_id
+      directions_id
     )
       .then(numRowsAffected => {
-        logger.info(`direction with id ${direction_id} deleted.`)
+        logger.info(`direction with id ${directions_id} deleted.`)
         res.status(204).end()
       })
       .catch(next)
