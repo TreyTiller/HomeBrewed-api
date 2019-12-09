@@ -47,6 +47,7 @@ Returns a JSON object with recipe meta information inside
    When posting to this enpoint the recpie title, skill, and time are all required
 
 ### Recipe Directions
+Returns a JSON object containing an array of directions
 
 * URL:
   /api/directions/:recipe_id
@@ -63,6 +64,7 @@ Id set based on the active url param
    The 'Title' is a required field which is to say all inputs must contain actual content
 
 ### Recipe Supplies
+Returns a JSON object containing an array of supplies
 
 * URL:
   /api/supplies/:recipe_id
@@ -79,6 +81,7 @@ Id set based on the active url param
    The 'Title' is a required field which is to say all inputs must contain actual content
 
 ### Registration
+Creates user credentials to use for login
 
 * URL:
   /api/users
