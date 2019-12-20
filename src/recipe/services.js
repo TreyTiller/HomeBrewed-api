@@ -17,6 +17,7 @@ const RecipesService = {
     deleteRecipe(knex, user_id) {
       return knex('recipes')
         .where({ user_id })
+        .orWhere({id})
         .delete()
     },
     updateRecipe(knex, id, user_id, newRecipeFields) {

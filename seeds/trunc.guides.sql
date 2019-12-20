@@ -1,1 +1,1 @@
-TRUNCATE guides;
+TRUNCATE recipes;
