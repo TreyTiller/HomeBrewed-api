@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --require test/setup.js",
+    "test": "mocha || true --require test/setup.js",
     "dev": "nodemon src/server.js",
     "predeploy": "npm audit && npm run migrate:production",
     "migrate": "postgrator --config postgrator-config.js",
@@ -21,7 +21,6 @@
   "dependencies": {
     "bcrypt": "^3.0.6",
     "bcryptjs": "^2.4.3",
-    "chai": "^4.2.0",
     "chai-http": "^4.3.0",
     "cors": "^2.8.5",
     "dotenv": "^8.1.0",
@@ -30,16 +29,18 @@
     "jsonwebtoken": "^8.5.1",
     "knex": "^0.20.1",
     "logger": "0.0.1",
-    "mocha": "^6.2.2",
     "morgan": "^1.9.1",
     "nodemon": "^1.19.4",
     "pg": "^7.12.1",
-    "supertest": "^4.0.2",
+    "should": "^13.2.3",
     "valid-url": "^1.0.9",
     "winston": "^3.2.1",
     "xss": "^1.0.6"
   },
   "devDependencies": {
-    "postgrator-cli": "^3.2.0"
+    "chai": "^4.2.0",
+    "mocha": "^6.2.2",
+    "postgrator-cli": "^3.2.0",
+    "supertest": "^4.0.2"
   }
 }
