@@ -7,11 +7,9 @@ var request = require("supertest");
 const chai = require("chai");
 const chaiHttp = require("chai-http");
 
-
 chai.use(chaiHttp);
 
 describe("GET /api/directions/:recipe_id", function() {
-
   it("should require authorization", function(done) {
     request(app)
       .post("/api/directions/1")
@@ -24,9 +22,7 @@ describe("GET /api/directions/:recipe_id", function() {
 
   it("should respond with a 200 ", function(done) {
     request(app)
-    .get("/api/directions/1")
-    .expect(200, done)
-    
+      .get("/api/directions/1")
+      .expect(200, done);
   });
 });
-

@@ -16,8 +16,6 @@ describe("GET /api/supplies/:recipe_id", function() {
   });
 
   it("should respond with a 200", function(done) {
-    request
-      .get("/api/supplies/1")
-      .expect(200, done)
+    request.get("/api/supplies/1").expect(200, done);
   });
 });
