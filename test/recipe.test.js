@@ -20,6 +20,7 @@ describe('GET /api/recipes', function() {
     before(loginUser(auth));
 
     it('should respond with JSON array', function(done) {
+        console.log(auth, "This is the result for the auth variable after loginUser")
         request
             .get('/api/recipes')
             .set('Authorization', 'Bearer ' + auth.token)
@@ -39,14 +40,15 @@ function loginUser(auth) {
         request
             .post('/api/auth/login')
             .send({
-                user_name: 'DEMO',
-                password: 'Demo001!'
+                user_name: 'TriggaTrey',
+                password: 'Trigga001'
             })
             .expect(200)
             .end(onResponse);
 
         function onResponse(err, res) {
-            auth.token = res.body.token;
+            console.log(res.body, "jkhslkdjfhlkdjhflkjahsdf");
+            auth.token = res.body.authToken;
             return done();
         }
     };

@@ -7,7 +7,7 @@ var request = require("supertest")(app);
 describe("GET /api/supplies/:recipe_id", function() {
   it("should require authorization", function(done) {
     request
-      .post("/api/supplies/:recipe_id")
+      .post("/api/supplies/1")
       .expect(401)
       .end(function(err, res) {
         if (err) return done(err);

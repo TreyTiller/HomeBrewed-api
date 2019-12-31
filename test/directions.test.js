@@ -14,7 +14,7 @@ describe("GET /api/directions/:recipe_id", function() {
 
   it("should require authorization", function(done) {
     request(app)
-      .post("/api/directions/:recipe_id")
+      .post("/api/directions/1")
       .expect(401)
       .end(function(err, res) {
         if (err) return done(err);
@@ -24,7 +24,7 @@ describe("GET /api/directions/:recipe_id", function() {
 
   it("should respond with a 200 ", function(done) {
     request(app)
-    .get("/api/directions/:recipe_id")
+    .get("/api/directions/1")
     .expect(200, done)
     
   });
